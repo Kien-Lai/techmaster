@@ -1,0 +1,16 @@
+package com.techmaster.sample.service.impl;
+
+import java.util.List;
+
+import com.techmaster.sample.model.Student;
+import com.techmaster.sample.service.StudentService;
+
+public class StudentServiceImpl implements StudentService {
+
+	@Override
+	public List<Student> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}
