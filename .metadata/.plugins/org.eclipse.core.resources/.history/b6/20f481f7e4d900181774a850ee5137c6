@@ -1,5 +1,0 @@
-package com.techmaster.sample.repository;
-
-public interface StudentRepository {
-
-}

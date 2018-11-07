@@ -1,7 +1,0 @@
-package com.techmaster.sample.service.impl;
-
-import com.techmaster.sample.service.StudentService;
-
-public class StudentServiceImpl implements StudentService {
-	
-}
