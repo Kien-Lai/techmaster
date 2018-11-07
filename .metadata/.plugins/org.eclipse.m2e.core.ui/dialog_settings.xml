@@ -6,6 +6,8 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="/Users/tahi1990/Documents/Techmaster/spring-rest-sample"/>
+			<item value="/Users/tahi1990/Documents/Techmaster/spring-data-jpa-sample"/>
 			<item value="/Users/tahi1990/Documents/Techmaster/demo"/>
 			<item value="/Users/tahi1990/Documents/Techmaster/spring-boot-thymeleaf-sample"/>
 		</list>
