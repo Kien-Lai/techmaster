@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "student")
 public class Student {
@@ -23,9 +25,11 @@ public class Student {
 	private String name;
 	private Integer age;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "STUDENT_TEACHERS", joinColumns = { @JoinColumn(name = "STUDENT_ID") }, inverseJoinColumns = {
-			@JoinColumn(name = "TEACHER_ID") })
+	@ManyToMany(cascade = { CascadeType.MERGE }, fetch = FetchType.EAGER)
+	@JoinTable(name = "STUDENT_TEACHERS", joinColumns = {
+			@JoinColumn(name = "STUDENT_ID", referencedColumnName = "id") }, inverseJoinColumns = {
+					@JoinColumn(name = "TEACHER_ID", referencedColumnName = "id") })
+	@JsonIgnoreProperties("students")
 	private Set<Teacher> teachers;
 
 	public Long getId() {

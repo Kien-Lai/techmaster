@@ -13,20 +13,19 @@ import javax.persistence.ManyToMany;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "teacher")
 public class Teacher {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	private String name;
 	private String subject;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "STUDENT_TEACHERS", joinColumns = { @JoinColumn(name = "TEACHER_ID") }, inverseJoinColumns = {
-			@JoinColumn(name = "STUDENT_ID") })
+	@ManyToMany(mappedBy = "teachers", fetch = FetchType.EAGER)
 	private Set<Student> students;
 
 	public Long getId() {
