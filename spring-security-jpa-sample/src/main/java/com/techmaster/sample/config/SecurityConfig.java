@@ -1,9 +1,13 @@
 package com.techmaster.sample.config;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -42,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public JwtAccessTokenConverter accessTokenConverter() {
 		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-		converter.setSigningKey("ksdfjlsdkfjladskfjlasdkfkjhsf");
+		converter.setSigningKey("ksdfjlsdkfjladskfjlasdkfkjhsfsdjhfkjsdf");
 
 		return converter;
 	}
@@ -66,16 +70,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	@Bean
-	public FilterRegistrationBean corsFilter() {
-		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	public FilterRegistrationBean<CorsFilter> corsFilter() {
+		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		CorsConfiguration config = new CorsConfiguration();
+
+		List<String> allowedDomains = Arrays.asList("*");
+
 		config.setAllowCredentials(true);
-		config.addAllowedOrigin("*");
+		config.setAllowedOrigins(allowedDomains);
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
 		source.registerCorsConfiguration("/**", config);
-		FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
-		bean.setOrder(0);
+
+		FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>(new CorsFilter(source));
+
+		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
 		return bean;
 	}
 }
