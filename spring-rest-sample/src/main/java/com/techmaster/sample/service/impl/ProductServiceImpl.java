@@ -20,4 +20,9 @@ public class ProductServiceImpl implements ProductService {
 		return repository.findAll();
 	}
 
+	@Override
+	public void create(Product product) {
+		repository.save(product);
+	}
+
 }

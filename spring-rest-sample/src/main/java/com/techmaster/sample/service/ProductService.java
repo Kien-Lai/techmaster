@@ -7,5 +7,7 @@ import com.techmaster.sample.model.Product;
 public interface ProductService {
 
 	List<Product> getAll();
+	
+	void create(Product product);
 
 }

@@ -6,6 +6,7 @@ import { AppComponent } from "./app.component";
 import { UiModule } from "./ui/ui.module";
 import { RouterModule } from "@angular/router";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent],
