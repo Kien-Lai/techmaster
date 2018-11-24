@@ -25,4 +25,13 @@ export class ProductsListComponent implements OnInit {
   navigateToCreate() {
     this.router.navigate(['/products/create']);
   }
+
+  delete(product) {
+
+    let index = this.products.indexOf(product);
+
+    this.productService.deleteProductUsingDELETE(product.id).subscribe(res => {
+      this.products.splice(index, 1);
+    });
+  }
 }
